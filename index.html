@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quake Airlines - Pilot Applications</title>
+</head>
+
+<style>
+    body {
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgb(0, 193, 239), #fb60b2 100%);
+    }
+    input {
+      border-top-style: hidden;
+      border-right-style: hidden;
+      border-left-style: hidden;
+      border-bottom-style: groove;
+      background-color: #ffffff;
+    }
+    
+    .no-outline:focus {
+      outline: none;
+      color: rgb(44, 44, 44);
+      background-color: #ffffff1f;
+    }
+    .no-outline{
+      outline: none;
+      color: rgb(44, 44, 44);
+      background: transparent;
+    }
+
+    .sub {
+    position: relative;
+    top: 10%;
+	box-shadow: 3px 3px 0px 0px #9fb4f2;
+	background-color:#005eff;
+	border-radius:13px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:17px;
+	padding:21px 37px;
+	text-decoration:none;
+	text-shadow:0px 1px 7px #283966;
+    }
+    .sub:hover {
+        background-color:#476e9e;
+    }
+    .sub:active {
+        position:relative;
+        top:1px;
+    }
+
+    .white_text{
+        color: rgb(44, 44, 44);
+        font-family:Trebuchet MS;
+    }
+    .white_text1{
+        color: rgb(44, 44, 44);
+        font-family:Trebuchet MS;
+        font-size: 40px;
+    }
+
+  </style>
+<body>
+    <center>
+        <h1 class="white_text1">Pilots Application</h1>
+        <form>
+        <div class="white_text">
+            <p>Discord username and tag.</p>
+            <input id="DiscoUserTag" type="text" class="no-outline" placeholder="...">
+            <p>What is your email?</p>
+            <input id="Email" type="email" class="no-outline" placeholder="...">
+            <p>How old are you?</p>
+            <input id="Age" type="number" class="no-outline" placeholder="...">
+            <p>What is your in real life name?</p>
+            <input id="IRLName" type="text" class="no-outline" placeholder="...">
+            <p>What is your past experience as pilot?</p>
+            <input id="Exp" type="text" class="no-outline" placeholder="...">
+            <p>Are you using decent PC / Laptop?</p>
+            <input id="PC/LAP" type="text" class="no-outline" placeholder="...">
+            <p>Roblox Username</p>
+            <input id="RBXL" type="text" class="no-outline" placeholder="...">
+            <p>State your timezone e.g  (GMT+3/UTC+3) Or PST, You Can Use Google To Find This.</p>
+            <input id="TMZ" type="text" class="no-outline" placeholder="...">
+            <h3><th>Info<th><br></h3>
+            <p>Quake Airlines does not discriminate on the basis of race, sex, color, religion, age, national origin, marital status, disability, veteran status, genetic information, sexual orientation, <br>gender identity or any other reason prohibited by law in provision of employment opportunities and benefits.<br><br></p>
+            <h3>I have read, understand and accept the content of the Privacy Notice and consent to the processing of my data<br> as part of this application. If you don't have any message in your Gmail within 5 days then it means that you did not pass.</h3>
+            <input type="checkbox" id="read" name="read">
+            <label for="read">Yes</label>
+        </div>
+    </center></form>
+    <center><button onclick="sendMessage()" class="sub">Apply</button></center>
+</body>
+
+<script>
+    function sendMessage() {
+      const request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/970589679596498954/8_XGeMyYAjjGlktZmJU3yG2g9d5ab6KaWyvFB9XQMfUVymRn5NrVlFmJ0XMOAPHrX9Wy");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      const params = {
+        username: "Pilot Application Results",
+        avatar_url: "",
+        content: `Applicant Discord Username: **${document.getElementById("DiscoUserTag").value}**\nApplicant Email: **${document.getElementById("Email").value}**\nApplicant Age: **${document.getElementById("Age").value}**\nApplicant Name: **${document.getElementById("IRLName").value}**\nApplicant Experience: **${document.getElementById("Exp").value}**\nApplicant PC: **${document.getElementById("PC/LAP").value}**\nApplicant Roblox Username: **${document.getElementById("RBXL").value}**\nApplicant Timezone: **${document.getElementById("TMZ").value}**\nApplicant Read: **${document.getElementById("read").checked}**`
+      }
+
+      request.send(JSON.stringify(params));
+    var delayInMilliseconds = 1500; //1 second
+
+    setTimeout(function() {
+        location.replace("completed.html")
+    }, delayInMilliseconds);
+    }
+  </script>
+
+</html>
